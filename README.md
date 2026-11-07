@@ -1,11 +1,12 @@
 # fosforo.nvim
 
-Configuración personal de Neovim con estilo de terminal IBM antigua: fondo carbón,
+Configuración personal de Neovim con estilo de terminal IBM antigua: fondo negro,
 acentos de fósforo verde, IBM Plex Mono, cursor de bloque que parpadea y nada de
 iconos raros. Solo texto plano.
 
-Usa la misma paleta que mi alacritty, pero con fondo `#121212` (la terminal es
-`#000000`) y una barra de estado con bloques de color por modo, así no se confunden.
+Usa exactamente la paleta de mi alacritty: negro puro `#000000` y colores brillantes
+(verde `#22ff22`, azul `#00aaff`, cian, amarillo, magenta), con una barra de estado
+de bloques de color por modo.
 
 ```
  NORMAL  git:main  init.lua                         E:1 lua  12:5  40%

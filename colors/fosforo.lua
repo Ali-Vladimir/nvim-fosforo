@@ -1,26 +1,30 @@
 -- FOSFORO: tema retro estilo terminal IBM.
--- Usa la misma paleta que alacritty, pero con fondo gris carbon (#121212)
--- en vez de negro puro, para que nvim se distinga de la terminal.
+-- Misma paleta que alacritty: negro puro y colores brillantes de fosforo.
 vim.cmd("highlight clear")
 vim.g.colors_name = "fosforo"
 vim.o.background = "dark"
 
 local c = {
-  bg      = "#121212", -- fondo de nvim (la terminal es #000000)
-  bg2     = "#1c1c1c", -- linea actual, flotantes, barra
-  bg3     = "#2a2a2a",
-  sel     = "#1f3f1f", -- seleccion con tinte de fosforo
+  bg      = "#000000", -- igual que la terminal
+  bg2     = "#141414", -- linea actual, flotantes, barra
+  bg3     = "#262626",
+  sel     = "#0a3d0a", -- seleccion verde fosforo
   fg      = "#d1d1d1",
   dim     = "#666666",
-  faint   = "#444444",
+  faint   = "#3a3a3a",
   black   = "#000000",
-  red     = "#af5f5f",
+  red     = "#ff0000",
   green   = "#22ff22",
-  yellow  = "#dfaf87",
-  blue    = "#87afd7",
-  magenta = "#af87af",
-  cyan    = "#87afaf",
-  white   = "#bcbcbc",
+  yellow  = "#ffff00",
+  blue    = "#00aaff",
+  magenta = "#ff00ff",
+  cyan    = "#00ffff",
+  white   = "#ffffff",
+  amber   = "#dfaf87",
+  -- tonos suaves de la paleta normal (para texto secundario)
+  sred    = "#af5f5f",
+  sblue   = "#87afd7",
+  scyan   = "#87afaf",
   bred    = "#ff0000",
   byellow = "#ffff00",
   bblue   = "#00aaff",
@@ -40,12 +44,12 @@ hl("Cursor",       { fg = c.black, bg = c.green })
 hl("CursorLine",   { bg = c.bg2 })
 hl("CursorColumn", { bg = c.bg2 })
 hl("ColorColumn",  { bg = c.bg2 })
-hl("LineNr",       { fg = c.faint })
+hl("LineNr",       { fg = c.dim })
 hl("CursorLineNr", { fg = c.green, bold = true })
 hl("SignColumn",   { bg = c.bg })
 hl("FoldColumn",   { fg = c.faint, bg = c.bg })
 hl("Folded",       { fg = c.dim, bg = c.bg2 })
-hl("WinSeparator", { fg = c.bg3 })
+hl("WinSeparator", { fg = c.dim })
 hl("VertSplit",    { link = "WinSeparator" })
 hl("EndOfBuffer",  { fg = c.bg })
 hl("NonText",      { fg = c.faint })
@@ -89,14 +93,14 @@ hl("FosforoStWarn",      { fg = c.byellow, bg = c.bg2, bold = true })
 
 -- ── Sintaxis ───────────────────────────────────────────────
 hl("Comment",      { fg = c.dim, italic = true })
-hl("Constant",     { fg = c.magenta })
-hl("String",       { fg = c.yellow })
-hl("Character",    { fg = c.yellow })
-hl("Number",       { fg = c.magenta })
-hl("Boolean",      { fg = c.magenta, bold = true })
+hl("Constant",     { fg = c.amber })
+hl("String",       { fg = c.green })
+hl("Character",    { fg = c.green })
+hl("Number",       { fg = c.amber })
+hl("Boolean",      { fg = c.amber, bold = true })
 hl("Float",        { link = "Number" })
 hl("Identifier",   { fg = c.fg })
-hl("Function",     { fg = c.cyan })
+hl("Function",     { fg = c.cyan, bold = true })
 hl("Statement",    { fg = c.blue, bold = true })
 hl("Keyword",      { fg = c.blue, bold = true })
 hl("Conditional",  { link = "Keyword" })
@@ -104,15 +108,15 @@ hl("Repeat",       { link = "Keyword" })
 hl("Label",        { fg = c.blue })
 hl("Exception",    { fg = c.red, bold = true })
 hl("Operator",     { fg = c.white })
-hl("PreProc",      { fg = c.red })
-hl("Include",      { fg = c.red })
-hl("Define",       { fg = c.red })
-hl("Macro",        { fg = c.red })
-hl("Type",         { fg = c.green })
+hl("PreProc",      { fg = c.magenta })
+hl("Include",      { fg = c.magenta, bold = true })
+hl("Define",       { fg = c.magenta })
+hl("Macro",        { fg = c.magenta })
+hl("Type",         { fg = c.yellow })
 hl("StorageClass", { fg = c.blue })
-hl("Structure",    { fg = c.green })
-hl("Typedef",      { fg = c.green })
-hl("Special",      { fg = c.cyan })
+hl("Structure",    { fg = c.yellow })
+hl("Typedef",      { fg = c.yellow })
+hl("Special",      { fg = c.scyan })
 hl("SpecialChar",  { fg = c.bcyan })
 hl("Tag",          { fg = c.blue })
 hl("Delimiter",    { fg = c.white })
@@ -122,17 +126,17 @@ hl("Error",        { fg = c.bred, bold = true })
 
 -- Treesitter / LSP (algunos ajustes finos)
 hl("@variable",            { fg = c.fg })
-hl("@variable.builtin",    { fg = c.magenta, italic = true })
-hl("@variable.parameter",  { fg = c.white, italic = true })
+hl("@variable.builtin",    { fg = c.red, italic = true })
+hl("@variable.parameter",  { fg = c.sblue, italic = true })
 hl("@property",            { fg = c.fg })
-hl("@constructor",         { fg = c.green })
+hl("@constructor",         { fg = c.yellow })
 hl("@punctuation",         { fg = c.white })
 hl("@tag",                 { fg = c.blue })
-hl("@tag.attribute",       { fg = c.cyan, italic = true })
+hl("@tag.attribute",       { fg = c.yellow, italic = true })
 hl("@tag.delimiter",       { fg = c.dim })
 hl("@markup.heading",      { fg = c.green, bold = true })
 hl("@markup.link",         { fg = c.bblue, underline = true })
-hl("@markup.raw",          { fg = c.yellow })
+hl("@markup.raw",          { fg = c.green })
 hl("@markup.strong",       { bold = true })
 hl("@markup.italic",       { italic = true })
 hl("@lsp.type.variable",   {})
@@ -210,6 +214,6 @@ hl("MasonHighlight", { fg = c.green })
 hl("MasonHighlightBlockBold", { link = "LazyH1" })
 
 -- Colores para la terminal integrada (misma paleta que alacritty)
-local term = { c.bg2, c.red, c.green, c.yellow, c.blue, c.magenta, c.cyan, c.white,
-  c.dim, c.bred, "#00ff00", c.byellow, c.bblue, c.bmagenta, c.bcyan, "#ffffff" }
+local term = { "#1c1c1c", "#af5f5f", "#22ff22", "#dfaf87", "#87afd7", "#af87af", "#87afaf", "#bcbcbc",
+  "#666666", "#ff0000", "#00ff00", "#ffff00", "#00aaff", "#ff00ff", "#00ffff", "#ffffff" }
 for i, col in ipairs(term) do vim.g["terminal_color_" .. (i - 1)] = col end
